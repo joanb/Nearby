@@ -1,4 +1,4 @@
-package net.andapps.nearby.model
+package net.andapps.nearby.domain.model
 
 import com.google.gson.annotations.SerializedName
 
