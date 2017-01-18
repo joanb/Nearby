@@ -11,7 +11,9 @@ import net.andapps.nearby.R
 /**
  * Created by Joan on 17/01/2017.
  */
-class ShopsListFragment : Fragment() {
+class ShopsListFragment : Fragment(), ShopsListView {
+
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater?.inflate(R.layout.fragment_shops_list, container, false)

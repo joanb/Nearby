@@ -9,7 +9,7 @@ import net.andapps.nearby.ui.NearbyApp
 import net.andapps.nearby.ui.di.components.ActivityComponent
 import net.andapps.nearby.ui.di.components.DaggerActivityComponent
 import net.andapps.nearby.ui.di.modules.ActivityModule
-import net.andapps.nearby.ui.di.modules.ViewModule
+import net.andapps.nearby.ui.di.modules.ActivityViewModule
 import javax.inject.Inject
 
 class ShopsActivity : BaseActivity(), ShopsView {
@@ -24,7 +24,7 @@ class ShopsActivity : BaseActivity(), ShopsView {
         get() = DaggerActivityComponent.builder()
                 .applicationComponent((application as NearbyApp).component)
                 .activityModule(ActivityModule(this))
-                .viewModule(ViewModule(this))
+                .viewModule(ActivityViewModule(this))
                 .build()
 
 

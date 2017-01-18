@@ -16,7 +16,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class ShopsMapFragment : SupportMapFragment() , OnMapReadyCallback{
+class ShopsMapFragment : SupportMapFragment() ,ShopsMapView, OnMapReadyCallback {
 
     private val TIENDEO = LatLng(41.380968, 2.185584)
 
