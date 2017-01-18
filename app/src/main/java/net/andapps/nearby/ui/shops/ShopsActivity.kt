@@ -29,20 +29,16 @@ class ShopsActivity : BaseActivity(), ShopsView {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shops)
+        super.onCreate(savedInstanceState)
 
-        component.inject(this)
-        onInitializeView()
     }
 
-    fun onInitializeView() {
+    override fun onViewLoaded() {
         setSupportActionBar(toolbar)
 
         pager?.adapter = ShopsPagerAdapter(supportFragmentManager)
-
         tabs.setupWithViewPager(pager)
-
 
         shopsPresenter.onStart()
     }

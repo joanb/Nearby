@@ -11,6 +11,6 @@ class ShopsPresenter
 @Inject constructor(val view: ShopsView) {
 
     fun onStart() {
-        view.showSnack();
+        view.showSnack()
     }
 }
