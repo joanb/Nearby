@@ -2,6 +2,9 @@ package net.andapps.nearby.ui.di.components
 
 import android.content.Context
 import dagger.Component
+import net.andapps.nearby.domain.repository.ShopsRepository
+import net.andapps.nearby.domain.threads.PostExecutionThread
+import net.andapps.nearby.domain.threads.ThreadExecutor
 import net.andapps.nearby.ui.NearbyApp
 import net.andapps.nearby.ui.di.modules.ApplicationModule
 import javax.inject.Singleton
@@ -18,4 +21,7 @@ interface ApplicationComponent {
 
     fun application(): NearbyApp
     fun context(): Context
+    fun threadExecutor(): ThreadExecutor
+    fun postExecutionThread(): PostExecutionThread
+    fun shopsRepository(): ShopsRepository
 }

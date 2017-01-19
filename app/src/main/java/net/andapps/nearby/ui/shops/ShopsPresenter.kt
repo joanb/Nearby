@@ -9,8 +9,9 @@ import javax.inject.Inject
 
 class ShopsPresenter
 @Inject constructor(val view: ShopsView) {
-
     fun onStart() {
-        view.showSnack()
+        view.initializeViews()
     }
+
+
 }

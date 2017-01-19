@@ -1,7 +1,6 @@
 package net.andapps.nearby.ui.shops
 
 import android.os.Bundle
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_shops.*
 import net.andapps.nearby.R
 import net.andapps.nearby.ui.BaseActivity
@@ -14,17 +13,14 @@ import javax.inject.Inject
 
 class ShopsActivity : BaseActivity(), ShopsView {
 
-    override fun showSnack() {
-        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show()
-    }
-
+    var pagerAdapter: ShopsPagerAdapter? = null
     @Inject lateinit var shopsPresenter: ShopsPresenter
 
     private val component : ActivityComponent
         get() = DaggerActivityComponent.builder()
                 .applicationComponent((application as NearbyApp).component)
                 .activityModule(ActivityModule(this))
-                .viewModule(ActivityViewModule(this))
+                .activityViewModule(ActivityViewModule(this))
                 .build()
 
 
@@ -35,12 +31,15 @@ class ShopsActivity : BaseActivity(), ShopsView {
     }
 
     override fun onViewLoaded() {
+        shopsPresenter.onStart()
+    }
+
+    override fun initializeViews() {
         setSupportActionBar(toolbar)
 
-        pager?.adapter = ShopsPagerAdapter(supportFragmentManager)
+        pagerAdapter = ShopsPagerAdapter(supportFragmentManager)
+        pager?.adapter = pagerAdapter
         tabs.setupWithViewPager(pager)
-
-        shopsPresenter.onStart()
     }
 
 

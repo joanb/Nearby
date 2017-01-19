@@ -1,6 +1,9 @@
 package net.andapps.nearby.domain.di
 
 import dagger.Module
+import dagger.Provides
+import net.andapps.nearby.domain.usecases.GetAllShopsInteractor
+import net.andapps.nearby.domain.usecases.GetAllShopsUseCase
 
 
 /**
@@ -9,4 +12,7 @@ import dagger.Module
 
 @Module
 class DomainModule {
+
+    @Provides
+    fun providesGetAllShopsUseCase(getAllShopsInteractor: GetAllShopsInteractor) : GetAllShopsUseCase = getAllShopsInteractor
 }

@@ -8,7 +8,7 @@ import javax.inject.Inject
 /**
  * Created by Joan on 18/01/2017.
  */
-class BaseUseCase<T>
+open class BaseUseCase<T>
 @Inject constructor(val postExecutionThread: PostExecutionThread){
 
 

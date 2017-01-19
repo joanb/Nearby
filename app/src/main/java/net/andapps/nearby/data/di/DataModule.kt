@@ -2,9 +2,12 @@ package net.andapps.nearby.data.di
 
 import dagger.Module
 import dagger.Provides
+import net.andapps.nearby.data.repository.shops.ShopsDataRepository
+import net.andapps.nearby.domain.repository.ShopsRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
+import javax.inject.Singleton
 
 
 /**
@@ -24,4 +27,8 @@ class DataModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }
+
+    @Provides
+    @Singleton
+    fun providesShopsRepository(shopsDataRepository: ShopsDataRepository): ShopsRepository = shopsDataRepository
 }

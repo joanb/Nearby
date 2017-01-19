@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Nearby</string>
+    <string name="exception_connectivity_message">There is no connectivity right now</string>
 </resources>

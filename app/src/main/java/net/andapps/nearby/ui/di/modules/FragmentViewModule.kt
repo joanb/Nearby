@@ -16,8 +16,9 @@ import net.andapps.nearby.ui.shops.pages.map.ShopsMapView
 class FragmentViewModule (val fragment: Fragment){
 
     @Provides
-    fun providesShopsMapView(): ShopsMapView = fragment as ShopsMapView
+    fun providesShopsListView(): ShopsListView = fragment as ShopsListView
+
 
     @Provides
-    fun providesShopsListView(): ShopsListView = fragment as ShopsListView
+    fun providesShopsMapView(): ShopsMapView = fragment as ShopsMapView
 }
