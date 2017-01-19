@@ -15,12 +15,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import net.andapps.nearby.domain.model.Shop
 import net.andapps.nearby.ui.NearbyApp
 import net.andapps.nearby.ui.di.components.DaggerFragmentComponent
 import net.andapps.nearby.ui.di.components.FragmentComponent
 import net.andapps.nearby.ui.di.modules.FragmentModule
 import net.andapps.nearby.ui.di.modules.FragmentViewModule
+import net.andapps.nearby.ui.entities.ShopViewEntity
 import javax.inject.Inject
 
 class ShopsMapFragment : SupportMapFragment(), ShopsMapView, OnMapReadyCallback {
@@ -52,12 +52,10 @@ class ShopsMapFragment : SupportMapFragment(), ShopsMapView, OnMapReadyCallback 
 
     }
 
-    override fun showShops(shops: List<Shop>) {
-        for (shop: Shop in shops) {
+    override fun showShops(shops: List<ShopViewEntity>) {
+        for (shop: ShopViewEntity in shops) {
             //todo: pasar directamente a objeto de vista shop con estos parámetros
-            val location = LatLng(
-                    java.lang.Float.valueOf(shop.latitude?.replace(",", ".")).toDouble(),
-                    java.lang.Float.valueOf(shop.longitude?.replace(",", ".")).toDouble())
+            val location = LatLng(shop.latitude!!, shop.longitude!!)
             map?.addMarker(MarkerOptions().position(location).title(shop.retailerName).snippet(shop.addressStreet))
         }
     }

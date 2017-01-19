@@ -2,6 +2,7 @@ package net.andapps.nearby.ui.shops.pages.map
 
 import net.andapps.nearby.domain.model.Shop
 import net.andapps.nearby.domain.usecases.GetAllShopsUseCase
+import net.andapps.nearby.ui.mapper.ShopEntityMapper
 import javax.inject.Inject
 
 
@@ -10,7 +11,8 @@ import javax.inject.Inject
  */
 class ShopsMapPresenter
 @Inject constructor(val view: ShopsMapView,
-                    val getAllShopsUseCase: GetAllShopsUseCase) {
+                    val getAllShopsUseCase: GetAllShopsUseCase,
+                    val mapper: ShopEntityMapper) {
     fun onStart() {
         view.showLoadingFeedback()
         getAllShopsUseCase.execute(object: GetAllShopsUseCase.GetAllShopsCallback {
@@ -19,7 +21,7 @@ class ShopsMapPresenter
             }
 
             override fun onSuccess(param: List<Shop>) {
-                view.showShops(param)
+                view.showShops(mapper.map(param))
             }
         })
     }

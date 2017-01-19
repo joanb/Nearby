@@ -1,6 +1,6 @@
 package net.andapps.nearby.ui.shops.pages.map
 
-import net.andapps.nearby.domain.model.Shop
+import net.andapps.nearby.ui.entities.ShopViewEntity
 
 
 /**
@@ -10,5 +10,5 @@ interface ShopsMapView {
 //
     fun showLoadingFeedback()
 
-    fun showShops(shops: List<Shop>)
+    fun showShops(shops: List<ShopViewEntity>)
 }
