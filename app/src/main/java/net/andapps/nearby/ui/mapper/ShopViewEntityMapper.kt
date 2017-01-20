@@ -25,8 +25,8 @@ class ShopViewEntityMapper
         shop.phoneNumber = "tel:" + entity?.phoneNumber
         shop.web = entity?.web
 
-        shop.latitude = java.lang.Float.valueOf(entity?.latitude?.replace(",", ".")).toDouble()
-        shop.longitude = java.lang.Float.valueOf(entity?.longitude?.replace(",", ".")).toDouble()
+        shop.latitude = java.lang.Float.valueOf(entity?.latitude?.replace(",", "."))?.toDouble()
+        shop.longitude = java.lang.Float.valueOf(entity?.longitude?.replace(",", "."))?.toDouble()
 
         return shop
     }
