@@ -1,6 +1,9 @@
 package net.andapps.nearby.ui.shops
 
 import android.os.Bundle
+import android.support.annotation.NonNull
+import android.support.design.widget.BottomNavigationView
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_shops.*
 import net.andapps.nearby.R
 import net.andapps.nearby.ui.BaseActivity
@@ -11,12 +14,12 @@ import net.andapps.nearby.ui.di.modules.ActivityModule
 import net.andapps.nearby.ui.di.modules.ActivityViewModule
 import javax.inject.Inject
 
-class ShopsActivity : BaseActivity(), ShopsView {
+class ShopsActivity : BaseActivity(), ShopsView, BottomNavigationView.OnNavigationItemSelectedListener {
 
     var pagerAdapter: ShopsPagerAdapter? = null
-    @Inject lateinit var shopsPresenter: ShopsPresenter
+    @Inject lateinit var presenter: ShopsPresenter
 
-    private val component : ActivityComponent
+    private val component: ActivityComponent
         get() = DaggerActivityComponent.builder()
                 .applicationComponent((application as NearbyApp).component)
                 .activityModule(ActivityModule(this))
@@ -31,7 +34,16 @@ class ShopsActivity : BaseActivity(), ShopsView {
     }
 
     override fun onViewLoaded() {
-        shopsPresenter.onStart()
+        presenter.onStart()
+    }
+
+
+    override fun  onNavigationItemSelected(@NonNull item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            R.id.place -> presenter.onPlacesSeleted()
+            R.id.list -> presenter.onListSelected()
+        }
+        return true
     }
 
     override fun initializeViews() {
@@ -40,6 +52,9 @@ class ShopsActivity : BaseActivity(), ShopsView {
         pagerAdapter = ShopsPagerAdapter(supportFragmentManager)
         pager?.adapter = pagerAdapter
         tabs.setupWithViewPager(pager)
+
+        bottom_navigation.setOnNavigationItemSelectedListener(this)
+
     }
 
 

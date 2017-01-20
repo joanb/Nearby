@@ -13,5 +13,13 @@ class ShopsPresenter
         view.initializeViews()
     }
 
+    fun onListSelected() {
+
+    }
+
+    fun onPlacesSeleted() {
+
+    }
+
 
 }
