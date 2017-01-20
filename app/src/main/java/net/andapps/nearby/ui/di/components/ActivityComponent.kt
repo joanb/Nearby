@@ -4,6 +4,7 @@ import dagger.Component
 import net.andapps.nearby.ui.di.modules.ActivityModule
 import net.andapps.nearby.ui.di.scopes.PerActivity
 import net.andapps.nearby.ui.shops.ShopsActivity
+import net.andapps.nearby.ui.shops.detail.ShopDetailActivity
 
 
 /**
@@ -16,4 +17,5 @@ import net.andapps.nearby.ui.shops.ShopsActivity
 interface ActivityComponent {
 
     fun inject(shopsActivity: ShopsActivity)
+    fun inject(shopDetailActivity: ShopDetailActivity)
 }

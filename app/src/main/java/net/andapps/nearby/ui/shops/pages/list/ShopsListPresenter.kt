@@ -2,6 +2,9 @@ package net.andapps.nearby.ui.shops.pages.list
 
 import net.andapps.nearby.domain.model.Shop
 import net.andapps.nearby.domain.usecases.GetAllShopsUseCase
+import net.andapps.nearby.ui.Navigator
+import net.andapps.nearby.ui.entities.ShopViewEntity
+import net.andapps.nearby.ui.mapper.ShopViewEntityMapper
 import javax.inject.Inject
 
 
@@ -10,7 +13,9 @@ import javax.inject.Inject
  */
 class ShopsListPresenter
 @Inject constructor(val view: ShopsListView,
-                    val getAllShopsUseCase: GetAllShopsUseCase) {
+                    val getAllShopsUseCase: GetAllShopsUseCase,
+                    val shopViewMapper: ShopViewEntityMapper,
+                    val navigator: Navigator) {
 
 
     fun onStart() {
@@ -21,9 +26,13 @@ class ShopsListPresenter
             }
 
             override fun onSuccess(param: List<Shop>) {
-                view.showShops(param)
+                view.showShops(shopViewMapper.map(param))
             }
         })
+    }
+
+    fun navigateToShopDetail(shop: ShopViewEntity) {
+        navigator.navigateToShopDetail(view.retrieveActivityContext(), shop)
     }
 
 

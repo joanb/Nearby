@@ -1,13 +1,14 @@
 package net.andapps.nearby.ui.entities
 
+import java.io.Serializable
+
 
 /**
  * Created by Joan on 19/01/2017.
  */
-class ShopViewEntity {
-    var addressCity: String? = null
-    var addressPostalCode: String? = null
-    var addressStreet: String? = null
+class ShopViewEntity : Serializable{
+    var address: String? = null
+    var street: String? = null
     var isHasCatalogs: Boolean = false
     var phoneNumber: String? = null
     var retailerId: String? = null

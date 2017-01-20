@@ -9,21 +9,21 @@ import javax.inject.Inject
 /**
  * Created by Joan on 19/01/2017.
  */
-class ShopEntityMapper
+class ShopViewEntityMapper
     @Inject constructor(): BaseMapper<Shop, ShopViewEntity>() {
 
 
     override fun map(entity: Shop?): ShopViewEntity? {
         val shop: ShopViewEntity = ShopViewEntity()
-        shop.addressStreet = entity?.addressCity
-        shop.addressCity = entity?.addressCity
-        shop.addressPostalCode = entity?.addressPostalCode
+        shop.address = entity?.addressStreet + " " + entity?.addressCity + " " + entity?.addressPostalCode
+        shop.street = entity?.addressStreet
         shop.isHasCatalogs = entity?.isHasCatalogs!!
         shop.retailerId = entity?.retailerId
         shop.retailerName = entity?.retailerName
         shop.shopId = entity?.shopId
         shop.shopName = entity?.shopName
-        shop.phoneNumber = entity?.phoneNumber
+        shop.phoneNumber = "tel:" + entity?.phoneNumber
+        shop.web = entity?.web
 
         shop.latitude = java.lang.Float.valueOf(entity?.latitude?.replace(",", ".")).toDouble()
         shop.longitude = java.lang.Float.valueOf(entity?.longitude?.replace(",", ".")).toDouble()

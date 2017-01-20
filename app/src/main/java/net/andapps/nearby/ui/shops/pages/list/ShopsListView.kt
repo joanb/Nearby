@@ -1,6 +1,7 @@
 package net.andapps.nearby.ui.shops.pages.list
 
-import net.andapps.nearby.domain.model.Shop
+import android.content.Context
+import net.andapps.nearby.ui.entities.ShopViewEntity
 
 
 /**
@@ -10,5 +11,6 @@ interface ShopsListView {
 
     fun initializeViews()
     fun showLoadingFeedback()
-    fun showShops(shops: List<Shop>)
+    fun showShops(shops: List<ShopViewEntity>)
+    fun retrieveActivityContext(): Context
 }

@@ -7,6 +7,7 @@ import net.andapps.nearby.data.model.DataShop
 import net.andapps.nearby.data.repository.BaseRepository
 import net.andapps.nearby.domain.repository.ShopsRepository
 import retrofit2.Retrofit
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -25,6 +26,7 @@ class ShopsDataRepository @Inject constructor(@Named("tiendeo API") val retrofit
         val TEN_MINUTES: Long = 600000
     }
 
+    @Synchronized
     override fun getAll(callback: ShopsRepository.GetAllPlacesCallback) {
 
         try {
@@ -56,13 +58,14 @@ class ShopsDataRepository @Inject constructor(@Named("tiendeo API") val retrofit
 
     //little caching
     private fun shouldUseDisk(shops: List<DataShop>): Boolean {
-        return thereIsConnectivity()
-                && (shops[0].retrievedTimeStamp?.minus(System.currentTimeMillis())!! < TEN_MINUTES)
+        return !thereIsConnectivity()
+                || System.currentTimeMillis().minus(shops[0].retrievedTimeStamp as Long) <= Companion.TEN_MINUTES
     }
 
-    private fun insertOrUpdate(shops: List<DataShop>) {
+    private fun insertOrUpdate(shops: ArrayList<DataShop>) {
 
         shops[0].retrievedTimeStamp = System.currentTimeMillis()
+
 
         val realm = Realm.getDefaultInstance()
         realm.beginTransaction()

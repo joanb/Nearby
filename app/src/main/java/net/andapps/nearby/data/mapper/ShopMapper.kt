@@ -14,7 +14,7 @@ class ShopMapper
 
     override fun map(entity: DataShop?): Shop? {
         val shop = Shop()
-        shop.addressStreet = entity?.addressCity
+        shop.addressStreet = entity?.addressStreet
         shop.addressCity = entity?.addressCity
         shop.addressPostalCode = entity?.addressPostalCode
         shop.isHasCatalogs = entity?.isHasCatalogs!!
@@ -25,6 +25,8 @@ class ShopMapper
         shop.shopId = entity?.shopId
         shop.shopName = entity?.shopName
         shop.phoneNumber = entity?.phoneNumber
+        shop.web = entity?.web
         return shop
     }
+
 }

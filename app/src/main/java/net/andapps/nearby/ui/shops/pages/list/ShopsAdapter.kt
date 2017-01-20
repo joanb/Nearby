@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import net.andapps.nearby.R
-import net.andapps.nearby.domain.model.Shop
+import net.andapps.nearby.ui.entities.ShopViewEntity
 import java.util.*
 
 
 /**
  * Created by Joan on 19/01/2017.
  */
-class ShopsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ShopsAdapter(val presenter: ShopsListPresenter) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var shops = ArrayList<Shop>()
+    var shops = ArrayList<ShopViewEntity>()
 
-    fun setShops(shops: List<Shop>) {
+    fun setShops(shops: List<ShopViewEntity>) {
         this.shops.addAll(shops)
         notifyDataSetChanged()
     }
@@ -43,9 +43,10 @@ class ShopsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             shopAddressView = itemView.findViewById(R.id.shop_address_view) as TextView
         }
 
-        fun bind(shop: Shop) {
+        fun bind(shop: ShopViewEntity) {
             shopNameView.text = shop.shopName
-            shopAddressView.text = shop.addressStreet + " " + shop.addressCity + " " + shop.addressPostalCode
+            shopAddressView.text = shop.address
+            itemView.setOnClickListener { presenter.navigateToShopDetail(shop) }
         }
     }
 }

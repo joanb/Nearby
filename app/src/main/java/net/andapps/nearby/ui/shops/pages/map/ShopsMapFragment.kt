@@ -56,7 +56,7 @@ class ShopsMapFragment : SupportMapFragment(), ShopsMapView, OnMapReadyCallback 
         for (shop: ShopViewEntity in shops) {
             //todo: pasar directamente a objeto de vista shop con estos parámetros
             val location = LatLng(shop.latitude!!, shop.longitude!!)
-            map?.addMarker(MarkerOptions().position(location).title(shop.retailerName).snippet(shop.addressStreet))
+            map?.addMarker(MarkerOptions().position(location).title(shop.retailerName).snippet(shop.street))
         }
     }
 

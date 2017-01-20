@@ -1,5 +1,6 @@
 package net.andapps.nearby.ui.shops.pages.list
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -8,12 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_shops_list.*
 import net.andapps.nearby.R
-import net.andapps.nearby.domain.model.Shop
 import net.andapps.nearby.ui.NearbyApp
 import net.andapps.nearby.ui.di.components.DaggerFragmentComponent
 import net.andapps.nearby.ui.di.components.FragmentComponent
 import net.andapps.nearby.ui.di.modules.FragmentModule
 import net.andapps.nearby.ui.di.modules.FragmentViewModule
+import net.andapps.nearby.ui.entities.ShopViewEntity
 import javax.inject.Inject
 
 
@@ -25,7 +26,8 @@ class ShopsListFragment : Fragment(), ShopsListView {
     @Inject
     lateinit var presenter: ShopsListPresenter
 
-    var recyclerViewAdapter : ShopsAdapter? = null
+
+    var recyclerViewAdapter: ShopsAdapter? = null
 
     val component: FragmentComponent
         get() = DaggerFragmentComponent.builder()
@@ -52,7 +54,7 @@ class ShopsListFragment : Fragment(), ShopsListView {
     }
 
     override fun initializeViews() {
-        recyclerViewAdapter = ShopsAdapter()
+        recyclerViewAdapter = ShopsAdapter(presenter)
         shops_recycler_view.adapter = recyclerViewAdapter
         shops_recycler_view.layoutManager = LinearLayoutManager(activity)
     }
@@ -61,7 +63,9 @@ class ShopsListFragment : Fragment(), ShopsListView {
 
     }
 
-    override fun showShops(shops: List<Shop>) {
+    override fun showShops(shops: List<ShopViewEntity>) {
         recyclerViewAdapter?.setShops(shops)
     }
+
+    override fun retrieveActivityContext(): Context = activity
 }
