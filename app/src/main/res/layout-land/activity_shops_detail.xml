@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="16dp"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal|bottom"
+            android:text="Dummy"
+            android:id="@+id/shopNameTV"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|top"
+            android:id="@+id/shopAddressTV"
+            android:text="Dummy"
+            android:textSize="24sp"/>
+
+
+    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/phoneImageView"
+                android:background="@color/colorPrimary"
+                android:layout_margin="14dp"
+                android:padding="6dp"
+                android:layout_weight="1"
+                android:elevation="2dp"
+                tools:targetApi="lollipop">
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_call_black_24dp"
+                android:layout_marginStart="40dp"
+                android:layout_weight="1.6"
+                />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/call_shop"
+                android:gravity="center_vertical|start"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/webSiteImageView"
+                android:src="@drawable/ic_public_black_24dp"
+                android:background="@color/colorPrimary"
+                android:layout_margin="14dp"
+                android:layout_weight="1"
+                android:padding="6dp"
+                android:elevation="2dp"
+                tools:targetApi="lollipop">
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_public_black_24dp"
+                android:layout_marginStart="40dp"
+                android:layout_weight="1.6"
+                />
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/visit_website"
+                android:gravity="center_vertical|start"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
